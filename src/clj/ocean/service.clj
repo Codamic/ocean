@@ -2,7 +2,8 @@
   (:require [io.pedestal.http :as http]
             [io.pedestal.http.route :as route]
             [io.pedestal.http.body-params :as body-params]
-            [ring.util.response :as ring-resp]))
+            [ring.util.response :as ring-resp]
+            [clojure.java.io :as io]))
 
 (defn about-page
   [request]
@@ -12,7 +13,11 @@
 
 (defn home-page
   [request]
-  (ring-resp/response "Hello World!"))
+  (let [res (io/resource "public/index.html")]
+    (println res)
+    {:status 200
+     :body (slurp res)
+     :headers {"Content-Type" "text/html"}}))
 
 ;; Defines "/" and "/about" routes with their associated :get handlers.
 ;; The interceptors defined after the verb map (e.g., {:get home-page}
@@ -45,6 +50,8 @@
               ;; ::http/interceptors []
               ::http/routes routes
 
+              ::http/secure-headers {:content-security-policy-settings {:object-src "none"}}
+
               ;; Uncomment next line to enable CORS support, add
               ;; string(s) specifying scheme, host and port for
               ;; allowed source(s):
@@ -57,9 +64,9 @@
               ::http/resource-path "/public"
 
               ;; Either :jetty, :immutant or :tomcat (see comments in project.clj)
-              ::http/type :jetty
+              ::http/type :immutant
               ;;::http/host "localhost"
-              ::http/port 8080
+              ::http/port 3000
               ;; Options to pass to the container (Jetty)
               ::http/container-options {:h2c? true
                                         :h2? false
@@ -67,4 +74,3 @@
                                         ;:key-password "password"
                                         ;:ssl-port 8443
                                         :ssl? false}})
-

@@ -27,6 +27,10 @@
       server/create-server
       server/start))
 
+(defn stop-dev
+  []
+  (server/stop runnable-service))
+
 (defn -main
   "The entry-point for 'lein run'"
   [& args]
@@ -51,4 +55,3 @@
 ;;  [_]
 ;;  (server/servlet-destroy @servlet)
 ;;  (reset! servlet nil))
-
