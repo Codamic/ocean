@@ -3,7 +3,8 @@
             [io.pedestal.http.route :as route]
             [io.pedestal.http.body-params :as body-params]
             [ring.util.response :as ring-resp]
-            [clojure.java.io :as io]))
+            [clojure.java.io :as io]
+            [hellhound.router.http :as router]))
 
 (defn about-page
   [request]
@@ -14,7 +15,6 @@
 (defn home-page
   [request]
   (let [res (io/resource "public/index.html")]
-    (println res)
     {:status 200
      :body (slurp res)
      :headers {"Content-Type" "text/html"}}))
@@ -25,8 +25,12 @@
 (def common-interceptors [(body-params/body-params) http/html-body])
 
 ;; Tabular routes
-(def routes #{["/" :get (conj common-interceptors `home-page)]
-              ["/about" :get (conj common-interceptors `about-page)]})
+;; (def routes #{["/" :get (conj common-interceptors `home-page)]
+;;               ["/about" :get (conj common-interceptors `about-page)]})
+
+(router/defroutes route
+  ["/" :get (conj common-interceptors `home-page)]
+  ["/about" :get (conj common-interceptors `about-page)])
 
 ;; Map-based routes
 ;(def routes `{"/" {:interceptors [(body-params/body-params) http/html-body]
