@@ -4,7 +4,7 @@
             [io.pedestal.http.body-params :as body-params]
             [ring.util.response :as ring-resp]
             [clojure.java.io :as io]
-            [hellhound.router.http :as router]))
+            [hellhound.http.route :as router]))
 
 (defn about-page
   [request]
