@@ -3,7 +3,7 @@
   (:require [io.pedestal.http :as server]
             [io.pedestal.http.route :as route]
             [ocean.service :as service]
-            [hellhound.router.http :as router]))
+            [hellhound.http.route :as router]))
 
 ;; This is an adapted service map, that can be started and stopped
 ;; From the REPL you can call server/start and server/stop on this service
