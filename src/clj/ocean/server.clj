@@ -26,7 +26,7 @@
 
               ::server/allowed-origins {:creds true :allowed-origins (constantly true)}})
       ;; Wire up interceptor chains
-      serv1er/default-interceptors
+      server/default-interceptors
       server/dev-interceptors
       server/create-server
       server/start))

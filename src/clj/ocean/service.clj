@@ -5,7 +5,6 @@
             [ring.util.response :as ring-resp]
             [clojure.java.io :as io]
             [hellhound.http.route :as router]
-            [hellhound.http.static :as static]
             [hellhound.service     :as hh-service]
             [ocean.service :as service]))
 
@@ -25,7 +24,7 @@
 ;; Defines "/" and "/about" routes with their associated :get handlers.
 ;; The interceptors defined after the verb map (e.g., {:get home-page}
 ;; apply to / and its children (/about).
-(def common-interceptors [(static/serve-resource {}) (body-params/body-params) http/html-body])
+(def common-interceptors [(body-params/body-params) http/html-body])
 
 ;; Tabular routes
 ;; (def routes #{["/" :get (conj common-interceptors `home-page)]
