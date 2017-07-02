@@ -1,8 +1,9 @@
 (ns ocean.system
   (:require
-   [ocean.service                :as service]
-   [hellhound.component.pedestal :as pedestal]
-   [hellhound.system             :refer [defsystem]]))
+   [ocean.service                 :as service]
+   [hellhound.components.pedestal :as pedestal]
+   [hellhound.system              :refer [defsystem]]))
 
 (defsystem dev-system
-  (pedestal/make-pedestal-component service/service))
+  (websocket/make-instanc)
+  (pedestal/make-instance service/service))

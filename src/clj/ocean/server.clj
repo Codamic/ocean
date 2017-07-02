@@ -3,7 +3,10 @@
   (:require [io.pedestal.http :as server]
             [io.pedestal.http.route :as route]
             [ocean.service :as service]
-            [hellhound.http.route :as router]))
+            [hellhound.http.route :as router]
+            [hellhound.system     :as hellhound-system]
+            [ocean.system         :as system]))
+
 
 ;; This is an adapted service map, that can be started and stopped
 ;; From the REPL you can call server/start and server/stop on this service
@@ -39,7 +42,10 @@
   "The entry-point for 'lein run'"
   [& args]
   (println "\nCreating your server...")
-  (server/start runnable-service))
+  (hellhound-system/set-system! system/dev-system)
+  (hellhound-system/start))
+;;(server/start runnable-service)
+
 
 ;; If you package the service up as a WAR,
 ;; some form of the following function sections is required (for io.pedestal.servlet.ClojureVarServlet).
