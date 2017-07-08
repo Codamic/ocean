@@ -1,9 +1,18 @@
-(ns ocean.core)
+(ns ocean.core
+  (:require
+   [hellhound.core :as hellhound]
+   [ocean.routes   :as router]
+   [ocean.views    :as views]))
 
-(defn mount-root
-  []
-  (js/alert "Asdasd"))
 
-(defn ^:export init
-  [& rest]
-  (js/console.log "asdasd"))
+;; Your development environment setup goes here
+(defn dev-setup [])
+
+
+
+(defn ^:export init []
+  (hellhound/init!
+   {:router           (router/app-routes)
+    :dispatch-events  [:initialize-db]
+    :dev-setup        dev-setup
+    :main-view        views/main-panel}))
