@@ -2,7 +2,9 @@
   (:require
    [hellhound.core :as hellhound]
    [ocean.routes   :as router]
-   [ocean.views    :as views]))
+   [ocean.views    :as views]
+   [ocean.events   :as events]
+   [ocean.subs     :as subs]))
 
 
 ;; Your development environment setup goes here

@@ -1,6 +1,6 @@
 (ns ocean.views
   (:require [re-frame.core        :as re-frame]
-            [oneiri.views.home   :refer [home]]))
+            [ocean.views.home     :refer [home]]))
 
 (defn- panels [panel-name]
   (case panel-name
