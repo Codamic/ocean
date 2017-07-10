@@ -42,8 +42,13 @@
   "The entry-point for 'lein run'"
   [& args]
   (println "\nCreating your server...")
+  (println "><<<<<<<<<<<<<<<<<<<")
+  (clojure.pprint/pprint system/dev-system)
   (hellhound-system/set-system! system/dev-system)
-  (hellhound-system/start))
+  (println "><<<<<<<<<<<<<<<<<<<")
+  (clojure.pprint/pprint (hellhound-system/system)))
+
+  ;;(hellhound-system/start))
 ;;(server/start runnable-service)
 
 
