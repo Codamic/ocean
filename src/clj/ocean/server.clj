@@ -5,6 +5,7 @@
             [ocean.service :as service]
             [hellhound.http.route :as router]
             [hellhound.system     :as hellhound-system]
+            [hellhound.logger     :as log]
             [ocean.system         :as system]))
 
 
@@ -15,7 +16,10 @@
 (defn run-dev
   "The entry-point for 'lein run-dev'"
   [& args]
-  (println "\nCreating your [DEV] server...")
+  (log/init!)
+  (println "xxxxx")
+  (log/info "reating your server...111")
+  (taoensso.timbre/info "reating your server...111")
   (-> service/service ;; start with production configuration
       (merge {:env :dev}
               ;; do not block thread that starts web server
@@ -41,7 +45,8 @@
 (defn -main
   "The entry-point for 'lein run'"
   [& args]
-  (println "\nCreating your server...")
+  (log/init!)
+  ;;(log/info "\nCreating your server...")
   (println "><<<<<<<<<<<<<<<<<<<")
   (clojure.pprint/pprint system/dev-system)
   (hellhound-system/set-system! system/dev-system)

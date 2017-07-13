@@ -3,13 +3,11 @@
   :url "http://example.com/FIXME"
   :license {:name "Eclipse Public License"
             :url "http://www.eclipse.org/legal/epl-v10.html"}
+
+  :exclusions [ch.qos.logback/logback-classic]
   :dependencies [[org.clojure/clojure "1.9.0-alpha17"]
                  [org.clojure/clojurescript "1.9.521"]
-                 [codamic/hellhound   "1.0.0-SNAPSHOT"]
-                 [ch.qos.logback/logback-classic "1.1.8" :exclusions [org.slf4j/slf4j-api]]
-                 [org.slf4j/jul-to-slf4j "1.7.22"]
-                 [org.slf4j/jcl-over-slf4j "1.7.22"]
-                 [org.slf4j/log4j-over-slf4j "1.7.22"]]
+                 [codamic/hellhound   "1.0.0-SNAPSHOT"]]
 
   :plugins [[lein-cljsbuild "1.1.4"]
             [lein-less "1.7.5"]]
