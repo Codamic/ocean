@@ -16,10 +16,7 @@
 (defn run-dev
   "The entry-point for 'lein run-dev'"
   [& args]
-  (log/init!)
-  (println "xxxxx")
-  (log/info "reating your server...111")
-  (taoensso.timbre/info "reating your server...111")
+  (log/info "Creating server...")
   (-> service/service ;; start with production configuration
       (merge {:env :dev}
               ;; do not block thread that starts web server
