@@ -7,6 +7,7 @@
   :exclusions [ch.qos.logback/logback-classic]
   :dependencies [[org.clojure/clojure "1.9.0-alpha17"]
                  [org.clojure/clojurescript "1.9.521"]
+
                  [codamic/hellhound   "1.0.0-SNAPSHOT"]]
 
   :plugins [[lein-cljsbuild "1.1.4"]

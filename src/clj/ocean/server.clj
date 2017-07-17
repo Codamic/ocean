@@ -17,23 +17,25 @@
   "The entry-point for 'lein run-dev'"
   [& args]
   (log/info "Creating server...")
-  (-> service/service ;; start with production configuration
-      (merge {:env :dev}
-              ;; do not block thread that starts web server
-             {::server/join? false
-              ;; Routes can be a function that resolve routes,
-              ;;  we can use this to set the routes to be reloadable
+  (hellhound-system/set-system! system/dev-system)
+  (hellhound-system/start))
+  ;; (-> service/service ;; start with production configuration
+  ;;     (merge {:env :dev}
+  ;;             ;; do not block thread that starts web server
+  ;;            {::server/join? false
+  ;;             ;; Routes can be a function that resolve routes,
+  ;;             ;;  we can use this to set the routes to be reloadable
 
-              ::server/routes (deref #'service/routes)
-              ;; #(route/expand-routes (deref #'service/routes))
-              ;; all origins are allowed in dev mode
+  ;;             ::server/routes (deref #'service/routes)
+  ;;             ;; #(route/expand-routes (deref #'service/routes))
+  ;;             ;; all origins are allowed in dev mode
 
-              ::server/allowed-origins {:creds true :allowed-origins (constantly true)}})
-      ;; Wire up interceptor chains
-      server/default-interceptors
-      server/dev-interceptors
-      server/create-server
-      server/start))
+  ;;             ::server/allowed-origins {:creds true :allowed-origins (constantly true)}})
+  ;;     ;; Wire up interceptor chains
+  ;;     server/default-interceptors
+  ;;     server/dev-interceptors
+  ;;     server/create-server
+  ;;     server/start))
 
 (defn stop-dev
   []
