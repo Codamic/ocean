@@ -1,7 +1,6 @@
 (ns ocean.system
   (:require
    [ocean.service                 :as service]
-   [hellhound.components.websocket :as websocket]
    [hellhound.components.pedestal  :as pedestal]
    [hellhound.components          :as components]
    [hellhound.system              :refer [defsystem]]))
@@ -13,8 +12,5 @@
 ;;                           {:requirements :websocket}))
 (def dev-system
   {:components
-   {:websocket (components/create-instance
-                (websocket/new-websocket {:router event-router}))
-    :pedestal  (components/create-instance
-                (pedestal/new-pedestal service/service)
-                [:websocket])}})
+   {:pedestal  (components/create-instance
+                (pedestal/new-pedestal service/service))}})
