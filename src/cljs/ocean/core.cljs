@@ -13,8 +13,9 @@
 
 
 (defn ^:export init []
-  (hellhound/init!
-   {:router           (router/app-routes)
-    :dispatch-events  [:initialize-db]
-    :dev-setup        dev-setup
-    :main-view        views/main-panel}))
+  (js/console.log "sameer"))
+  ;; (hellhound/init!
+  ;;  {:router           (router/app-routes)
+  ;;   :dispatch-events  [:initialize-db]
+  ;;   :dev-setup        dev-setup
+  ;;   :main-view        views/main-panel})

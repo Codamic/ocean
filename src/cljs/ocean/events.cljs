@@ -1,7 +1,6 @@
 (ns ocean.events
   (:require
    [re-frame.core        :as re-frame]
-   [hellhound.connection :as channels]
    [hellhound.handlers.app-db]
    [ocean.db :as db]))
 
