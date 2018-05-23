@@ -1,2 +1,0 @@
-{
- :pedestal {:service-map #hh/var "ocean.service/service"}}
